@@ -37,6 +37,6 @@
 
 **7. More Context**
 
-    I already have lots of experience building models like this and it is not going to be difficult.
+    I already have lots of experience building models like this and it is not going to be difficult. I will also use this model in another class, but I needed multiple functions anyway.
 
 **8
