@@ -21,11 +21,14 @@ def sharpen_image(image):
     return sharpened
 
 def unsharp_mask(image):
+    # Apply Gaussian blur to the image
     blurred = cv2.GaussianBlur(image, (0, 0), 2.0)
+    # Create a mask by subtracting the blurred image from the original image
     sharpened = cv2.addWeighted(image, 1.5, blurred, -0.5, 0)
     return sharpened
 
 def threshold_image(image):
+    # Convert the image to grayscale
     _, thresholded = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY)
     return thresholded
 
@@ -48,7 +51,9 @@ def contrast_stretching(image):
     return stretched
 
 def morphological_operations(image):
+    # Create a 3x3 kernel
     kernel = np.ones((3, 3), np.uint8)
+    # Perform dilation followed by erosion
     dilated = cv2.dilate(image, kernel, iterations=1)
     eroded = cv2.erode(dilated, kernel, iterations=1)
     return eroded
@@ -61,6 +66,7 @@ def main():
     contrast_stretched = contrast_stretching(img)
     morphological = morphological_operations(img)
 
+    # Display the images
     cv2.imshow("Original Image", img)
     cv2.imshow("Sharpened Image", sharpened)
     cv2.imshow("Unsharp Masked Image", unsharp_masked)
